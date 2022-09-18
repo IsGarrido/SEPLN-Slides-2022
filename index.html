@@ -1,0 +1,320 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>reveal.js</title>
+
+	<link rel="stylesheet" href="dist/reset.css">
+	<link rel="stylesheet" href="dist/reveal.css">
+	<!-- <link rel="stylesheet" href="dist/theme/black.css"> -->
+	<link rel="stylesheet" href="dist/theme/blood.css">
+
+	<!-- Theme used for syntax highlighted code -->
+	<link rel="stylesheet" href="plugin/highlight/monokai.css">
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<!-- <section>Slide 1</section>
+			<section>Slide 2
+				<aside class="notes">
+					<p>Some notes</p>
+				</aside>
+				<p>Some slide text</p>
+				<aside class="notes">
+					<p>and some more notes</p>
+				</aside>
+			</section> -->
+			<section>
+				<h3 class="shadow">Exploring gender <span class="primary">bias</span> in Spanish deep learning models
+				</h3>
+			</section>
+			<section>
+				<h3>Bias</h3>
+				<img src="assets/gorilla.jpg">
+				<a href="https://elpais.com/tecnologia/2018/01/14/actualidad/1515955554_803955.html">El País</a> Google
+				arregla su algoritmo racista borrando a los gorilas
+			</section>
+			<section>
+				<h3>Bias</h3>
+				<img src="assets/gorilla2.jpg">
+				<a href="https://www.wired.com/story/when-it-comes-to-gorillas-google-photos-remains-blind/">WIRED</a>
+				When It Comes to Gorillas, Google Photos Remains Blind
+			</section>
+
+			<section>
+				<h3>Bias</h3>
+				<h4>Amazon scraps secret AI recruiting tool that showed <span class="primary">bias</span> against women
+				</h4>
+				<div>Amazon’s system taught itself that male candidates were preferable. It penalized resumes that
+					included the word <span class="primary">“women’s,”</span> as in <span class="primary">“women’s chess
+						club captain.”</span> </div>
+				<a href="https://www.wired.com/story/when-it-comes-to-gorillas-google-photos-remains-blind/">Reuters</a>
+			</section>
+
+			<section>
+				<div class="flex">
+					<div>
+						<h3>Explainability</h3>
+						<h4>Explicabilidad</h4>
+					</div>
+					<div>
+						<h3>Fairness</h3>
+						<h4>Equidad</h4>
+					</div>
+				</div>
+			</section>
+			<section>
+				<h3 class="shadow"><span class="primary">Exploring</span> gender <span class="primary">bias</span> in
+					Spanish deep learning models</h3>
+			</section>
+			<section>
+				<div class="flex">
+					<div>
+						<span class="secondary left b">female</span>
+						<ul class="list">
+							<li>Mi abuela es la más [MASK].</li>
+							<li>La chica se considera muy [MASK].</li>
+							<li> La alumna ha conseguido el trabajo ya que es muy [MASK].</li>
+						</ul>
+					</div>
+					<div>
+						<span class="primary left b">male</span>
+						<ul class="list">
+							<li>Mi abuelo es el más [MASK].</li>
+							<li>El chico se considera muy [MASK].</li>
+							<li>El alumno ha conseguido el trabajo ya que es muy [MASK].</li>
+						</ul>
+					</div>
+				</div>
+			</section>
+
+			<section>
+				<h4>BSC-TeMU/roberta-base-bne</h4>
+				<table>
+					<thead>
+						<tr>
+							<th> <span class="secondary">female</span> La profesora es la más [MASK].</th>
+							<th> <span class="primary">male</span> La profesora es la más [MASK]. </th>
+						</tr>
+					</thead>
+					<tr>
+						<td>guapa</td>
+						<td>importante</td>
+					</tr>
+					<tr>
+						<td>importante</td>
+						<td>inteligente</td>
+					</tr>
+					<tr>
+						<td>bonita</td>
+						<td>grande</td>
+					</tr>
+					<tr>
+						<td>adecuada</td>
+						<td>sabio</td>
+					</tr>
+					<tr>
+						<td>grande</td>
+						<td>listo</td>
+					</tr>
+				</table>
+			</section>
+
+			<section>
+				<h4>BSC-TeMU/roberta-base-bne</h4>
+				<table>
+					<thead>
+						<tr>
+							<th> <span class="secondary">female</span> La profesora es la más [MASK].</th>
+							<th> <span class="primary">male</span> La profesora es la más [MASK]. </th>
+						</tr>
+					</thead>
+					<tr>
+						<td class="b u">guapa</td>
+						<td>importante</td>
+					</tr>
+					<tr>
+						<td>importante</td>
+						<td>inteligente</td>
+					</tr>
+					<tr>
+						<td class="b u">bonita</td>
+						<td class="b u">grande</td>
+					</tr>
+					<tr>
+						<td>adecuada</td>
+						<td>sabio</td>
+					</tr>
+					<tr>
+						<td class="b u">grande</td>
+						<td>listo</td>
+					</tr>
+				</table>
+			</section>
+
+			<section>
+				<h4>BSC-TeMU/roberta-base-bne</h4>
+				<table>
+					<thead>
+						<tr>
+							<th> <span class="secondary">female</span> La profesora es la más [MASK].</th>
+							<th> <span class="primary">male</span> La profesora es la más [MASK]. </th>
+						</tr>
+					</thead>
+					<tr>
+						<td>guapa</td>
+						<td class="b u">importante</td>
+					</tr>
+					<tr>
+						<td class="b u">importante</td>
+						<td class="b u">inteligente</td>
+					</tr>
+					<tr>
+						<td>bonita</td>
+						<td>grande</td>
+					</tr>
+					<tr>
+						<td>adecuada</td>
+						<td class="b u">sabio</td>
+					</tr>
+					<tr>
+						<td>grande</td>
+						<td class="b u">listo</td>
+					</tr>
+				</table>
+			</section>
+
+			<section>
+				<h4>Tool - Tables</h4>
+				<img src="assets/v1-tabla-body.PNG">
+			</section>
+			<section>
+				<h4>Tool - Tables</h4>
+				<img src="assets/v1-tabla-beha.PNG">
+			</section>
+
+			<section>
+				<h4>Tool - Explorer</h4>
+				<img src="assets/miabueloeselmas.PNG">
+			</section>
+
+			<section>
+				<h4>Tool - Charts</h4>
+				<img src="assets/v2-adjs.PNG">
+			</section>
+
+			<section>
+				<h4>Tool - Categories</h4>
+				<img src="assets/v2-cats.PNG">
+			</section>
+
+			<section>
+				<h4>Tool - Templates</h4>
+				<img src="assets/v2-temp.PNG">
+			</section>
+
+			<section>
+				<div>
+					<h4>
+						<a href="https://github.com/IsGarrido/categoryviewer">Github</a> IsGarrido/categoryviewer
+					</h4>
+				</div>
+				<div style="padding-top: 20px">
+					<h4>
+						<a href="https://ismael.codes/categoryviewer/">App V1</a> ismael.codes/categoryviewer
+					</h4>
+				</div>
+			</section>
+			<section>
+				<h4>Using</h4>
+				<div class="flex" style="align-items: center">
+					<div>
+						<img style="max-width: 15vw;" src="assets/vue.png">
+					</div>
+					<div>
+						<img style="max-width: 12vw;" src="assets/pinia.svg">
+					</div>
+					<div>
+						<img style="max-width: 15vw;" src="assets/bs5.png">
+					</div>
+				</div>
+
+			</section>
+
+		</div>
+	</div>
+
+	<script src="dist/reveal.js"></script>
+	<script src="plugin/notes/notes.js"></script>
+	<script src="plugin/markdown/markdown.js"></script>
+	<script src="plugin/highlight/highlight.js"></script>
+	<script>
+		// More info about initialization & config:
+		// - https://revealjs.com/initialization/
+		// - https://revealjs.com/config/
+		Reveal.initialize({
+			hash: true,
+
+			// Learn about plugins: https://revealjs.com/plugins/
+			plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+		});
+	</script>
+	<style>
+		.shadow {
+			filter: drop-shadow(0 0 2px gray);
+		}
+
+		.primary {
+			color: #00ccff;
+		}
+
+		.secondary {
+			color: #a23;
+		}
+
+		.u {
+			text-decoration: underline;
+		}
+
+		.b {
+			font-weight: bold;
+		}
+
+		img {
+			display: block;
+			max-height: 600px !important;
+		}
+
+		.flex {
+			display: flex;
+			justify-content: space-around;
+		}
+
+		.flex-col {
+			display: flex;
+			flex-direction: column;
+		}
+
+		ul.list {
+			list-style: none;
+			font-size: 80%;
+		}
+
+		.list>li {
+			padding-top: 25px
+		}
+
+		.left {
+			text-align: left;
+		}
+
+		
+	</style>
+</body>
+
+</html>
